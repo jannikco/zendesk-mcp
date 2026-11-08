@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "version": "1.0.0",
+  "product": "pipmcp",
+  "credential": "PIPMCP_API_KEY",
+  "skills": [
+    {
+      "name": "pipmcp-zendesk",
+      "description": "Connect AI agents to Zendesk using one PipMCP API key and actual hosted tool discovery."
+    }
+  ],
+  "files": {
+    "skills/pipmcp-zendesk/SKILL.md": "d917551336a389374cf21fdb407c42fb81ae337dd03394ea71548b9e375bbf5d"
+  }
+}

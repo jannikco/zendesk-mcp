@@ -1,336 +1,60 @@
 {
   "schemaVersion": 1,
-  "status": "ready",
-  "verification": "mock-only",
-  "releaseEligible": true,
-  "maintainer": "jannikco",
-  "license": "MIT",
-  "sourceRevision": "0e1fe6e6e0841fc053f5354970c1d9b9338e7e852df871a0c14633be4f003391",
-  "evidence": [
-    "Actual tools/call and direct-provider request contract tests"
-  ],
-  "provenance": [
-    "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
-  ],
   "id": "zendesk-mcp",
   "kind": "provider-connector",
   "product": "pipmcp",
   "title": "Zendesk MCP server",
-  "description": "Review support tickets and create a new ticket with an initial customer-service comment.",
-  "operationIds": [
-    "zendesk_list_tickets",
-    "zendesk_get_ticket",
-    "zendesk_create_ticket"
+  "description": "Use Zendesk with AI agents through one PipMCP API key, actual hosted schemas and governed execution.",
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "operationIds": [],
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "attributionSlug": "github-zendesk-mcp",
+  "sourceRevision": "fd562920a38addb179355bca43a5e67a1926f842efbab9a89e37bd0ed11b19b3",
+  "qualityVersion": 2,
+  "artifactType": "connector",
+  "evidence": [
+    "Gateway HTTP transport fixtures",
+    "Generated stdio wrapper discovery/call fixtures"
   ],
+  "provenance": [
+    "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
+  ],
+  "utility": {
+    "problem": "Review support tickets and create a new ticket with an initial customer-service comment.",
+    "output": "Actual hosted tool schemas and durable governed execution receipts"
+  },
   "appSlug": "zendesk",
   "appName": "Zendesk",
-  "providerDocs": "https://developer.zendesk.com/zendesk/oas.yaml",
-  "providerWebsite": "https://www.zendesk.com/",
-  "authentication": {
-    "type": "basic",
-    "requiredCredentialFields": [
-      "username",
-      "password"
-    ],
-    "settings": {},
-    "requiredHeaderNames": [],
-    "helpUrl": "https://support.zendesk.com/hc/en-us/articles/4408889192858",
-    "tenantRequired": true,
-    "accountParameterNames": []
-  },
-  "attributionSlug": "github-zendesk-mcp",
-  "artifactType": "connector",
-  "qualityVersion": 2,
   "connectorId": "zendesk",
-  "connector": {
-    "id": "zendesk",
-    "name": "Zendesk",
-    "version": "0.1.0",
-    "baseUrl": "https://{ZENDESK_SUBDOMAIN}.zendesk.com/api/v2",
-    "auth": {
-      "type": "basic",
-      "usernameEnv": "ZENDESK_EMAIL_WITH_TOKEN_SUFFIX",
-      "passwordEnv": "ZENDESK_API_TOKEN"
-    },
-    "tools": [
-      {
-        "name": "zendesk_list_tickets",
-        "description": "zendesk list tickets",
-        "method": "GET",
-        "path": "/tickets.json",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {},
-          "required": [],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {},
-          "body": {}
-        },
-        "approvalRequired": false,
-        "provenance": [
-          "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {}
-      },
-      {
-        "name": "zendesk_get_ticket",
-        "description": "zendesk get ticket",
-        "method": "GET",
-        "path": "/tickets/{id}.json",
-        "readOnly": true,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "id": {
-              "type": "integer",
-              "minimum": 1
-            }
-          },
-          "required": [
-            "id"
-          ],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [
-            "id"
-          ],
-          "query": {},
-          "body": {}
-        },
-        "approvalRequired": false,
-        "provenance": [
-          "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {
-          "id": 42
-        }
-      },
-      {
-        "name": "zendesk_create_ticket",
-        "description": "zendesk create ticket",
-        "method": "POST",
-        "path": "/tickets.json",
-        "readOnly": false,
-        "inputSchema": {
-          "type": "object",
-          "properties": {
-            "subject": {
-              "type": "string"
-            },
-            "comment": {
-              "type": "string"
-            }
-          },
-          "required": [
-            "subject",
-            "comment"
-          ],
-          "additionalProperties": false
-        },
-        "bindings": {
-          "path": [],
-          "query": {},
-          "body": {
-            "subject": "ticket.subject",
-            "comment": "ticket.comment.body"
-          }
-        },
-        "approvalRequired": true,
-        "provenance": [
-          "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
-        ],
-        "evidence": {
-          "state": "documented",
-          "providerLiveValidation": "not-run"
-        },
-        "sampleArguments": {
-          "subject": "Sandbox integration test",
-          "comment": "Created only after explicit approval in an authorized sandbox."
-        }
-      }
-    ],
-    "workflow": {
-      "name": "zendesk-workflow",
-      "description": "Review support tickets and create a new ticket with an initial customer-service comment.",
-      "steps": [
-        "zendesk_list_tickets",
-        "zendesk_get_ticket",
-        "zendesk_create_ticket"
-      ]
-    },
-    "provenance": [
-      "https://developer.zendesk.com/api-reference/ticketing/tickets/tickets/"
-    ],
-    "sourceEvidence": {
-      "state": "documented",
-      "providerLiveValidation": "not-run",
-      "checkedAt": "2026-11-08",
-      "operationCount": 3,
-      "kind": "official-documentation"
-    },
-    "setup": {
-      "requiresPipMcpAccount": false,
-      "credentialsHelpUrl": "https://support.zendesk.com/hc/en-us/articles/4408889192858",
-      "instructions": "In Zendesk Admin Center, go to Apps and integrations → APIs → API tokens and click Add API token. Copy the token (it is shown only once); you must be an admin and token access must be enabled."
-    },
-    "sampleWarning": "Example IDs are placeholders, not known provider records. Replace them with authorized sandbox/account IDs. Contact emails, file URLs and recipient numbers must be replaced with data you are authorized to use. Examples never authorize a write.",
-    "repoId": "zendesk-mcp",
-    "appSlug": "zendesk",
-    "product": "pipmcp",
-    "artifactType": "connector",
-    "sourceRevision": "0e1fe6e6e0841fc053f5354970c1d9b9338e7e852df871a0c14633be4f003391",
-    "capabilityEvidence": {
-      "local": {
-        "level": "Tested",
-        "operations": [
-          {
-            "name": "zendesk_list_tickets",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          },
-          {
-            "name": "zendesk_get_ticket",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          },
-          {
-            "name": "zendesk_create_ticket",
-            "level": "Tested",
-            "evidenceRefs": [
-              "Provider request/stdio contract tests"
-            ],
-            "method": "contract-fixture"
-          }
-        ],
-        "evidenceRefs": [
-          "Provider request/stdio contract tests"
-        ],
-        "mode": "local"
-      },
-      "managed": {
-        "level": "Documented",
-        "operations": [
-          {
-            "name": "zendesk_list_tickets",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          },
-          {
-            "name": "zendesk_get_ticket",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          },
-          {
-            "name": "zendesk_create_ticket",
-            "level": "Documented",
-            "evidenceRefs": [],
-            "method": "documentation"
-          }
-        ],
-        "evidenceRefs": [],
-        "mode": "managed"
-      }
-    },
-    "authentication": {
-      "type": "basic",
-      "requiredCredentialFields": [
-        "username",
-        "password"
-      ],
-      "settings": {},
-      "requiredHeaderNames": [],
-      "helpUrl": "https://support.zendesk.com/hc/en-us/articles/4408889192858",
-      "tenantRequired": true,
-      "accountParameterNames": []
-    },
-    "managedAvailability": {
-      "status": "listed",
-      "checkedAt": "2026-11-08T12:29:10.433747+00:00"
-    }
-  },
+  "executionAuthority": "pipmcp-gateway",
+  "version": "1.0.0",
+  "agentReady": true,
   "capabilityEvidence": {
     "local": {
       "level": "Tested",
       "operations": [
         {
-          "name": "zendesk_list_tickets",
+          "name": "gateway_transport",
           "level": "Tested",
+          "method": "contract-fixture",
           "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
-        },
-        {
-          "name": "zendesk_get_ticket",
-          "level": "Tested",
-          "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
-        },
-        {
-          "name": "zendesk_create_ticket",
-          "level": "Tested",
-          "evidenceRefs": [
-            "Provider request/stdio contract tests"
-          ],
-          "method": "contract-fixture"
+            "Generated gateway/stdio fixtures"
+          ]
         }
       ],
       "evidenceRefs": [
-        "Provider request/stdio contract tests"
+        "Generated gateway/stdio fixtures"
       ],
       "mode": "local"
     },
     "managed": {
       "level": "Documented",
-      "operations": [
-        {
-          "name": "zendesk_list_tickets",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        },
-        {
-          "name": "zendesk_get_ticket",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        },
-        {
-          "name": "zendesk_create_ticket",
-          "level": "Documented",
-          "evidenceRefs": [],
-          "method": "documentation"
-        }
-      ],
+      "operations": [],
       "evidenceRefs": [],
       "mode": "managed"
     }
-  },
-  "utility": {
-    "problem": "Review support tickets and create a new ticket with an initial customer-service comment.",
-    "output": "Actual provider API results through local MCP tools"
   }
 }
