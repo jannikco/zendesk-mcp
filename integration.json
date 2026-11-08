@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "status": "ready",
+  "verification": "mock-only",
+  "releaseEligible": true,
+  "maintainer": "jannikco",
+  "license": "MIT",
+  "sourceRevision": "c99e98166358c8481d6d56ffd7ecf0eb2edc05fece3378fab79c3b81011ea433",
+  "evidence": [
+    "Source-backed provider setup metadata",
+    "Offline configuration and MCP protocol tests"
+  ],
+  "provenance": [
+    "https://developer.zendesk.com/zendesk/oas.yaml"
+  ],
+  "id": "zendesk-mcp",
+  "kind": "mcp-setup",
+  "product": "pipmcp",
+  "title": "Zendesk MCP setup and connection checker",
+  "description": "Generate Zendesk MCP client configuration, inspect available tools and validate hosted endpoint access through PipMCP.",
+  "operationIds": [],
+  "appSlug": "zendesk",
+  "appName": "Zendesk",
+  "providerDocs": "https://developer.zendesk.com/zendesk/oas.yaml",
+  "providerWebsite": "https://www.zendesk.com/",
+  "authentication": {
+    "type": "basic",
+    "requiredCredentialFields": [
+      "username",
+      "password"
+    ],
+    "requiredHeaderNames": [],
+    "helpUrl": "https://support.zendesk.com/hc/en-us/articles/4408889192858",
+    "tenantRequired": true,
+    "accountParameterNames": []
+  },
+  "attributionSlug": "github-zendesk-mcp"
+}
